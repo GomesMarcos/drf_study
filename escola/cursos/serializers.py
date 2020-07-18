@@ -23,6 +23,14 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
 
 
 class CursoSerializer(serializers.ModelSerializer):
+    # NESTED RELATIONSHIP -> Traz TODAS as informações do model que está sendo serializado
+    # avaliacoes = AvaliacaoSerializer(many=True, read_only=True)
+
+    # hiperlinked related field -> Traz um hiperlinque para as informações do model que está sendo serializado
+    avaliacoes = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='avaliacao-detail')
+
+    # PRIMARY KEY RELATED FIELD -> Traz apenas o ID das informações do model que está sendo serializado
+    # avaliacoes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Curso
@@ -32,4 +40,5 @@ class CursoSerializer(serializers.ModelSerializer):
             'url',
             'publicacao',
             'is_ativo',
+            'avaliacoes',
         )
