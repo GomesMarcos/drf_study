@@ -8,6 +8,11 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
+
+da0bb95141b9428fac43208066ee28070904782e>
+
+TokenFelicity
+39990bcb462dd66e7860a788756f9f542389babe
 """
 
 import os
@@ -41,6 +46,7 @@ INSTALLED_APPS = [
     # ADITIONAL LIBS
     'django_filters',
     'rest_framework',
+    'rest_framework.authtoken',
 
     # PROJECT APPS
     'cursos',
@@ -132,7 +138,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # DRF
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES' : (
-        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES' : (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
